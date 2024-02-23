@@ -68,7 +68,30 @@ public class Land : MonoBehaviour
     //When the player presses the interact button while selecting this land
     public void Interact()
     {
-        //Interaction 
-        SwitchLandStatus(LandStatus.Farmland);
+        //Check the player's tool slot
+        ItemData toolSlot = InventoryManager.Instance.equippedTool;
+
+        //Try casting the itemdata in the toolslot as EquipmentData
+        EquipementData equipmentTool = toolSlot as EquipementData;
+
+        //Check if it is of type EquipmentData 
+        if (equipmentTool != null)
+        {
+            //Get the tool type
+            EquipementData.ToolType toolType = equipmentTool.toolType;
+
+            switch (toolType)
+            {
+                case EquipementData.ToolType.Hoe:
+                    SwitchLandStatus(LandStatus.Farmland);
+                    break;
+                case EquipementData.ToolType.WateringCan:
+                    SwitchLandStatus(LandStatus.Watered);
+                    break;
+            }
+
+
+        }
     }
+
 }

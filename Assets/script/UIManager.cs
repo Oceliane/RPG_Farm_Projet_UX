@@ -7,20 +7,24 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-
     public static UIManager Instance { get; private set; }
     [Header("Status Bar")]
     //Tool equip slot on the status bar
     public Image toolEquipSlot;
 
 
-
     [Header("Inventory System")]
     //The inventory panel
     public GameObject inventoryPanel;
 
+    //The tool equip slot UI on the Inventory panel
+    public HandInventorySlot toolHandSlot;
+
     //The tool slot UIs
     public InventorySlot[] toolSlots;
+
+    //The item equip slot UI on the Inventory panel
+    public HandInventorySlot itemHandSlot;
 
     //The item slot UIs
     public InventorySlot[] itemSlots;
@@ -46,6 +50,17 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         RenderInventory();
+        AssignSlotIndexes();
+    }
+
+    //Iterate through the slot UI elements and assign it its reference slot index
+    public void AssignSlotIndexes()
+    {
+        for (int i = 0; i < toolSlots.Length; i++)
+        {
+            toolSlots[i].AssignIndex(i);
+            itemSlots[i].AssignIndex(i);
+        }
     }
 
     //Render the inventory screen to reflect the Player's Inventory. 
@@ -63,6 +78,10 @@ public class UIManager : MonoBehaviour
         //Render the Item section
         RenderInventoryPanel(inventoryItemSlots, itemSlots);
 
+        //Render the equipped slots
+        toolHandSlot.Display(InventoryManager.Instance.equippedTool);
+        itemHandSlot.Display(InventoryManager.Instance.equippedItem);
+
         //Get Tool Equip from InventoryManager
         ItemData equippedTool = InventoryManager.Instance.equippedTool;
 
@@ -78,8 +97,6 @@ public class UIManager : MonoBehaviour
         }
 
         toolEquipSlot.gameObject.SetActive(false);
-
-
     }
 
     //Iterate through a slot in a section and display them in the UI
