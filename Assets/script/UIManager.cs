@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, ITimeTracker
 {
 
     public static UIManager Instance { get; private set; }
     [Header("Status Bar")]
+
+    //Time UI
+    public Text timeText;
+    public Text dateText;
     //Tool equip slot on the status bar
     public Image toolEquipSlot;
 
@@ -33,6 +37,7 @@ public class UIManager : MonoBehaviour
     public Text itemNameText;
     public Text itemDescriptionText;
 
+
     private void Awake()
     {
         //If there is more than one instance, destroy the extra
@@ -51,6 +56,9 @@ public class UIManager : MonoBehaviour
     {
         RenderInventory();
         AssignSlotIndexes();
+
+        //Add UIManager to the list of objects TimeManager will notify when the time updates
+        TimeManager.Instance.RegisterTracker(this);
     }
 
     //Iterate through the slot UI elements and assign it its reference slot index
@@ -133,6 +141,39 @@ public class UIManager : MonoBehaviour
         itemDescriptionText.text = data.description;
     }
 
+    //Callback to handle the UI for time
+    public void ClockUpdate(GameTimestamp timestamp)
+    {
+        //Handle the time
+        //Get the hours and minutes
+        int hours = timestamp.hour;
+        int minutes = timestamp.minute;
+
+        //AM or PM
+        string prefix = "AM ";
+
+        //Convert hours to 12 hour clock
+        if (hours > 12)
+        {
+            //Time becomes PM 
+            prefix = "PM ";
+            hours = hours - 12;
+            Debug.Log(hours);
+        }
+
+
+        //Format it for the time text display
+        timeText.text = prefix + hours + ":" + minutes.ToString("00");
+
+        //Handle the Date
+        int day = timestamp.day;
+        string season = timestamp.season.ToString();
+        string dayOfTheWeek = timestamp.GetDayOfTheWeek().ToString();
+
+        //Format it for the date text display
+        dateText.text = season + " " + day + " (" + dayOfTheWeek + ")";
+
+    }
 }
 
 

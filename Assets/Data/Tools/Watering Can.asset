@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: To watter your crops and soil.
   thumbnail: {fileID: 21300000, guid: eacbe99674d34be4ebe79784a1880335, type: 3}
-  gameModel: {fileID: 0}
+  gameModel: {fileID: 3928642541961935006, guid: 8877f4aac7d3c184ea4954647487e084, type: 3}
   toolType: 1
