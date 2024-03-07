@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 786053215063503215}
   - component: {fileID: 4448374419917422791}
   - component: {fileID: 2664581723710551082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1290,6 +1290,7 @@ Transform:
   - {fileID: 1637256057038278544}
   - {fileID: 1177938848313396097}
   - {fileID: 2491291606910172259}
+  - {fileID: 5764046748907623493}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1351,6 +1352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0643e4cbb98dc804f93dfdae5aab77fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 4
+  runSpeed: 8
 --- !u!1 &6457362444882808504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,6 +1858,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00017550588, y: -0.15621862, z: -0.019828632}
     m_Extent: {x: 0.79467046, y: 0.8891647, z: 0.17832361}
   m_DirtyAABB: 0
+--- !u!1 &7653159577285249260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5764046748907623493}
+  m_Layer: 0
+  m_Name: handpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5764046748907623493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653159577285249260}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.095, y: 0.998, z: 0.521}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6631748262583085845}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7659546805788081894
 GameObject:
   m_ObjectHideFlags: 0

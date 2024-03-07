@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e86902e8f86d24981aa617ae1615e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cropPrefab: {fileID: 4677282497980353578, guid: cb8344aea60160c4fbd79fa1f127a487, type: 3}
   landStatus: 0
   soilMat: {fileID: 2100000, guid: aa687d57e9cbd134b8545550b4ab507c, type: 2}
   farmlandMat: {fileID: 2100000, guid: 752bf92c41649d646a87dbdc53ef7ed8, type: 2}
